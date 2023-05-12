@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<!--
+@Titulo: Exibir página de cadastro de novo usuario.
+@Objetivo: Permitir que o usuário informe seus dados pessoais para cadastro
+no sistema. Para tanto, a página exibida conterá um formulário com os seguintes
+campos: nome, sobrenome, e-mail, instituição, login, senha e confirmar senha.
+@Contexto: Usuário clica no botão "Cadastrar-se" na página principal do sistema.
+@Atores: usuário ainda não cadastrado no sistema.
+@Recursos: scripts.js e estilo.css
+-->
+    <head> 
+		<script src="js/scripts.js" type="text/javascript"></script>
+        <link rel="stylesheet" type="text/css" href="css/estilo.css" />
+		<title>Cadastro de Usuário</title> 
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+    </head> 
+    <body> 
+        <div align=center bgcolor="#ffffff">
+		<form name="frmCadastro" method="post" action="../controle/controle_usuario.lp"
+			onSubmit="return verificar_formulario_usuario();"> 
+		<table width=457>
+			<tr>
+				<td align="left"><span align="left" class="pes">
+					C&L - Cenários e Léxicos</span></td>
+			</tr>	
+		</table>
+		<table class="tableestilo" cellpadding="20" >
+		<tr>
+		<td>
+		
+			<table cellpadding="5"> 
+	            <tr> 
+	                <td class="labelestilo" colspan="4" align="center">
+					<span class="titulo">Cadastro de novo usuário<br><br><br></span></td> 
+	            </tr>
+				<tr> 
+<!--
+@Episódio 1: Exibir campo Nome.
+-->				
+	                <td class="labelestilo">Nome:</td><td colspan="3"><input class="inputestilo" id="nome" name="nome" maxlength="60" size="40" type="text"></td> 
+	            </tr>
+				<tr> 
+<!--
+@Episódio 2: Exibir campo Sobrenome.
+-->	
+					<td class="labelestilo">Sobrenome:</td><td colspan="3"><input class="inputestilo" id="sobrenome" name="sobrenome" maxlength="60" size="40" type="text"></td> 
+	            </tr> 
+	            <tr> 
+<!--
+@Episódio 3: Exibir campo E-mail.
+-->	
+					<td class="labelestilo">E-mail:</td><td><input class="inputestilo" id="email" name="email" maxlength="100" size="40" type="text"></td> 
+				</tr>
+				<tr> 
+<!--
+@Episódio 4: Exibir campo Instituição.
+-->	
+					<td class="labelestilo">Instituição:</td><td colspan="3"><input class="inputestilo" id="instituicao" name="instituicao" maxlength="100" size="40" type="text"></td> 
+	            </tr>				
+				<tr> 
+<!--
+@Episódio 5: Exibir campo Login.
+-->					
+					<td class="labelestilo">Escolha um login:</td><td><input class="inputestilo" id="login" name="login" maxlength="60" size="18" type="text"></td> 
+				</tr>
+				<tr> 
+<!--
+@Episódio 6: Exibir campo Senha.
+-->					
+	                <td class="labelestilo">Digite uma senha:</td><td><input class="inputestilo" id="senha" name="senha" maxlength="20" size="12" type="password"></td> 
+				</tr>
+				<tr> 
+<!--
+@Episódio 7: Exibir campo Confirmar senha.
+-->					<td class="labelestilo">Digite a senha novamente:</td><td>
+						<input class="inputestilo" id="confirmarsenha" name="confirmarsenha" maxlength="20" size="12" type="password">
+						<input id="comando" name="comando" value="cadastrar" type="hidden">
+					</td> 
+				</tr>
+	            <tr> 
+	                <td align="center" colspan="4" height="40" valign="bottom">
+<!--
+@Episódio 8: Ao clicar no botão cadastrar o sistema será redirecionado para CONTROLE USUARIO. Restriçao:  Antes de submeter o formulário VERIFICAR FOMULÁRIO DO USUÁRIO.
+-->					<br>
+					<br>
+					<input name="cadastrar" type="submit" value="Cadastrar"></td> 
+	            </tr> 
+	        </table>
+		</td>	
+		</tr>
+		</table>
+        </form> 
+        </div>
+    </body> 
+</html> 
+
+<?php 
+} 
+?> 
+

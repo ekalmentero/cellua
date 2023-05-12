@@ -1,0 +1,352 @@
+function atualizar_menu_projetos(){
+	alert('bang');		
+}
+
+// Atualiza o menu lateral de léxicos e cenários no caso de uma inclusão / exclusão
+function atualizar_menu_lateral(){
+	
+	var	menu_cenario = parent.document.getElementById("cenario");
+	var menu_lexico = parent.document.getElementById("lexico");
+	
+	while (menu_cenario.firstChild) {
+		menu_cenario.removeChild(menu_cenario.firstChild);
+	}
+	
+	while (menu_lexico.firstChild) {
+		menu_lexico.removeChild(menu_lexico.firstChild);
+	}
+	
+	var menu = parent.document.getElementById("menu_projetos")
+	
+	projeto_selecionado= menu.options[menu.selectedIndex];
+	
+	ajax(projeto_selecionado.value, true);
+}
+
+// É chamada quando a página é carregada/recarregada
+function recarregar_pagina(id_sessao){
+	var menu = document.getElementById("menu_projetos");
+	menu.options[0].selected = true;
+	document.getElementById('conteudo').src = 'inicial_conteudo.lp';
+	montar_menusuperior(0,null,id_sessao);
+}
+
+function mudar_projeto(id_sessao){
+
+	
+	var menu_cenario = document.getElementById("cenario");
+	
+	var menu_lexico = document.getElementById("lexico");
+		
+	while (menu_cenario.firstChild) {
+		menu_cenario.removeChild(menu_cenario.firstChild);
+	}
+	
+	while (menu_lexico.firstChild) {
+		menu_lexico.removeChild(menu_lexico.firstChild);
+	}
+	
+	var menu = document.getElementById("menu_projetos")
+	
+	var projeto_selecionado= menu.options[menu.selectedIndex];
+	
+	var nivel_acesso = projeto_selecionado.text.substring(projeto_selecionado.text.length-4,projeto_selecionado.text.length-1);
+	
+	alert(nivel_acesso);
+	
+	if (projeto_selecionado.value > 0){
+		document.getElementById('conteudo').src = 'inicial_projeto.lp';
+	}else{
+		document.getElementById('conteudo').src = 'inicial_conteudo.lp';
+	}
+	
+	montar_menusuperior(projeto_selecionado.value, projeto_selecionado.text, id_sessao);
+	ajax(projeto_selecionado.value);
+}
+
+// Monta o menu superior da página principal.
+
+function montar_menusuperior(id_projeto_selecionado, nome_projeto_selecionado, id_sessao){
+		
+	var menu_superior = document.getElementById("menu_dropdown");
+	var novo_projeto_li = document.createElement('li');
+	var fale_conosco_li = document.createElement('li');
+	var ajuda_li = document.createElement('li');
+	var sair_li = document.createElement('li');
+	
+	if (menu_superior.firstChild){
+		while (menu_superior.hasChildNodes()) {
+			menu_superior.removeChild(menu_superior.firstChild);
+		}
+	}
+			
+	var outras_opcoes = document.createElement('li');
+	outras_opcoes.className = "submenu";
+	outras_opcoes.innerHTML = '<a href="index.html" target="_top">Outras Opções</a> ';	
+	
+	var menu_int = document.createElement('ul');
+	menu_int.className = "menu";
+	
+	var verificar_alteracoes = document.createElement('li');
+	verificar_alteracoes.className = "item";
+	verificar_alteracoes.innerHTML = '<a href="index.html" target="_top">Verificar Alterações</a> ';
+
+	menu_superior.appendChild(outras_opcoes);
+	outras_opcoes.appendChild(menu_int);
+	menu_int.appendChild(verificar_alteracoes);
+	
+	sair_li.innerHTML = '<a href="index.html" target="_top">Sair</a> ';	
+		
+	//Adiciona os menus estáticos
+
+	if (id_projeto_selecionado < 1){
+		if(document.getElementById("novo_cenario")){
+									
+			//Remove a opção novo cenário do menu superior
+			novo_cenario_li = document.getElementById("novo_cenario");
+			menu_superior.removeChild(novo_cenario_li);
+			
+			//Remove a opção novo símbolo do menu superior
+			novo_lexico_li = document.getElementById("novo_lexico");
+			menu_superior.removeChild(novo_lexico_li);
+		
+		}
+	}else{
+		if(!document.getElementById("novo_cenario")){
+						    
+            // Cria o a opção Novo Cenário no menu superior
+			var novo_cenario_li = document.createElement('li');
+			novo_cenario_li.id = "novo_cenario";
+			novo_cenario_li.className = "submenu";
+			novo_cenario_li.innerHTML = '<a href="novo_cenario.lp?id='+id_projeto_selecionado+'&nome='+nome_projeto_selecionado+'" target="conteudo">Novo Cenário</a>';		
+			menu_superior.appendChild(novo_cenario_li);	
+
+			//Cria a opção novo_simbolo no menu superior
+			var novo_lexico_li = document.createElement('li');
+			novo_lexico_li.id = "novo_lexico";
+			novo_lexico_li.className = "submenu";
+			novo_lexico_li.innerHTML = '<a href="novo_lexico.lp?id='+id_projeto_selecionado+'&nome='+nome_projeto_selecionado+'" target="conteudo">Novo Símbolo</a>';		
+			menu_superior.appendChild(novo_lexico_li);	
+			
+					
+		}else{
+			
+			//Remove a opção novo cenário do menu superior
+			novo_cenario_li = document.getElementById("novo_cenario");
+			menu_superior.removeChild(novo_cenario_li);
+			
+			//Remove a opção novo símbolo do menu superior
+			novo_lexico_li = document.getElementById("novo_lexico");
+			menu_superior.removeChild(novo_lexico_li);
+			
+			// Cria o a opção Novo Cenário no menu superior
+			var novo_cenario_li = document.createElement('li');
+			novo_cenario_li.id = "novo_cenario";
+			novo_cenario_li.className = "submenu";
+			novo_cenario_li.innerHTML = '<a href="novo_cenario.lp?id='+id_projeto_selecionado+'&nome='+nome_projeto_selecionado+'" target="conteudo">Novo Cenário</a>';		
+			menu_superior.appendChild(novo_cenario_li);	
+
+			//Cria a opção novo_simbolo no menu superior
+			var novo_lexico_li = document.createElement('li');
+			novo_lexico_li.id = "novo_lexico";
+			novo_lexico_li.className = "submenu";
+			novo_lexico_li.innerHTML = '<a href="novo_lexico.lp?id='+id_projeto_selecionado+'&nome='+nome_projeto_selecionado+'" target="conteudo">Novo Símbolo</a>';		
+			menu_superior.appendChild(novo_lexico_li);	
+			
+			
+		}
+	}
+	
+	//var novo_projeto_sub = document.createElement('li');
+	//novo_projeto_sub.className = "item";
+//	novo_projeto_sub.innerHTML = '<a href="#" target="conteudo">Outras Opções</a> ';	
+	
+	//Monta os menus estáticos (que aparecem sempre)
+	novo_projeto_li.className = "submenu";
+	fale_conosco_li.className = "submenu";
+	ajuda_li.className = "submenu";
+	sair_li.className = "submenu";
+	
+	novo_projeto_li.innerHTML = '<a href="novo_projeto.lp'+id_sessao+'" target="conteudo">Novo Projeto</a> ';
+	fale_conosco_li.innerHTML = '<a href="fale_conosco.lp" target="conteudo">Fale Conosco</a> ';
+	ajuda_li.innerHTML = '<a href="#" target="conteudo">Ajuda</a> ';		
+	sair_li.innerHTML = '<a href="index.html" target="_top">Sair</a> ';		
+
+	menu_superior.appendChild(novo_projeto_li);	
+	menu_superior.appendChild(fale_conosco_li);	
+	
+	//menu_superior.appendChild(novo_projeto_sub);	
+	
+	menu_superior.appendChild(ajuda_li);	
+	menu_superior.appendChild(sair_li);	
+}
+
+/*
+@Titulo: Listar as cidades
+@Objetivo: Fornecer uma lista com as cidades do estado passado por parâmetro.
+@Contexto: O usuário seleciona uma cidade e a função ajax() é chamada.
+@Atores: browser, aplicação. 
+@Recursos: retornaXMLCidades.php, o parâmetro valor contendo a sigla do estado selecionado e o parâmetro controle contendo o id do objeto select onde serão exibidas as cidades.
+*/
+
+function ajax(id_projeto, eh_iframe) {
+/*@Episódio 1: Criar uma requisição http dependendo do browser que o usuário está utilizando. Emite uma mensagem de alerta caso o browser não possua recursos para o uso do ajax.*/
+	try {   
+		httprequest = new XMLHttpRequest()
+    } 
+	catch (e) {
+   		try {
+      		httprequest = new ActiveXObject("Microsoft.XMLHTTP")
+      	}
+      	catch (ex) {
+      		try {
+      		   httprequest = new ActiveXObject("Msxml2.XMLHTTP")
+      		}
+      		catch (exc) {
+				alert("Seu browser não dá suporte a ajax")
+				httprequest = null
+            }
+        }
+    }
+	
+	if(httprequest) {
+
+		/*@Episódio 3: A requisição é aberta e são passados como parâmetros o método usado para abrí-la, a URL e se a conexão será assincrona ou não.*/
+		httprequest.open('POST', '../controle/controle_menu.lp?id_projeto='+id_projeto, true);
+
+		/*@Episódio 4: É definido o tipo de conteudo da requisição e logo em seguida a requisição é enviada para a URL selecionada previamente.*/
+		httprequest.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded; charset=iso-8859-1");
+		
+		httprequest.send(null);
+		
+		httprequest.onreadystatechange = function () {
+			if (httprequest.readyState == 4)
+			{
+				if (httprequest.status == 200)
+				{
+					/*@Episódio 5: Quando a requisição estiver pronta PROCESSA O XML.*/
+					if(httprequest.responseXML) {
+						
+						processaXML(httprequest.responseXML, id_projeto, eh_iframe);
+						
+					} else {
+						/*@Episódio 6: Emite uma mensagem quando o arquivo retornado não é um arquivo XML.*/
+					  alert("--Erro--");
+					}
+				}
+				else
+				{
+					/*@Episódio 7: Emite uma mensagem quando o servidor retorna algum tipo de erro.*/
+					alert ('O servidor retornou um erro.');
+				}
+			}
+		}
+	}
+}
+
+/*
+@Titulo: Processar o xml
+@Objetivo: Permite que os itens recebidos por parâmetro através de um arquivo XML seja exibido para o usuário em uma combo box.
+@Contexto: O sistema chama a função processXML.
+@Atores: browser e sistema
+@Recursos: XML e controle
+*/
+
+function processaXML(xmlResponse, id_projeto, eh_iframe){
+
+/*@Episódio 1: Armazena as tags <cidade> que aparecem no arquivo XML na variável cidades.*/
+	var cenarios = xmlResponse.getElementsByTagName("cenario");
+	var lexicos = xmlResponse.getElementsByTagName("lexico");
+	if (!eh_iframe){
+		var ul_cenario = document.getElementById('cenario');
+		var ul_lexico = document.getElementById('lexico');
+	}else{
+		var ul_cenario = parent.document.getElementById('cenario');
+		var ul_lexico = parent.document.getElementById('lexico');
+	}
+	
+/*@Episódio 2: Verifica se há algum cenário. Se houver percorre o arquivo XML.*/
+
+	if(cenarios.length > 0) {
+		 for(var i = 0 ; i < cenarios.length ; i++) {
+			var item = cenarios[i];
+			/*@Episódio 3: Armazena na variável título o título do cenário retirado da tag <titulo> do arquivo XML.*/
+			var titulo =  item.getElementsByTagName("titulo")[0].firstChild.nodeValue;
+			
+			/*@Episódio 4: Cria um novo li dinamicamente.*/
+			if (!eh_iframe){
+				var novo_li_cenario = document.createElement("li");
+			}else{
+				var novo_li_cenario = parent.document.createElement("li");
+			}
+			/*@Episódio 5: Atribui um id ao option criado.*/
+			//novo.setAttribute("id", "cidade");
+			
+			/*@Episódio 6: Atribui um valor e um texto ao option criado.*/
+			//novo.value = nome;
+			titulo_url = replaceAll(titulo," ","%20");
+			novo_li_cenario.innerHTML='<a href=../visao/exibe_cenario.lp?id_projeto='+id_projeto+'&titulo='+titulo_url+' target="conteudo">'+titulo+'</a>';
+
+			/*@Episódio 7: Adiciona o option criado a combo box.*/
+			ul_cenario.appendChild(novo_li_cenario);
+			
+		}
+	} else {
+		/*@Episódio 8: Emite mensagem de erro caso o XML esteja vazioAdiciona o option criado a combo box.*/
+		if (!eh_iframe){
+				var novo_li_cenario = document.createElement("li");
+		}else{
+				var novo_li_cenario = parent.document.createElement("li");
+		}
+		novo_li_cenario.innerHTML="&nbsp;&nbsp;Não há nenhum cenário neste projeto."
+		novo_li_cenario.className = "menuTextoSimples";
+		ul_cenario.appendChild(novo_li_cenario);
+		
+	}
+
+	if(lexicos.length > 0) {
+		 for(var i = 0 ; i < lexicos.length ; i++) {
+			var item = lexicos[i];
+			/*@Episódio 3: Armazena na variável título o título do cenário retirado da tag <titulo> do arquivo XML.*/
+			var nome =  item.getElementsByTagName("nome")[0].firstChild.nodeValue;
+			
+			/*@Episódio 4: Cria um novo li dinamicamente.*/
+			if (!eh_iframe){
+				var novo_li_lexico = document.createElement("li");
+			}else{
+				var novo_li_lexico = parent.document.createElement("li");
+			}
+			
+			/*@Episódio 5: Atribui um id ao option criado.*/
+			//novo.setAttribute("id", "cidade");
+			
+			/*@Episódio 6: Atribui um valor e um texto ao option criado.*/
+			//novo.value = nome;
+			nome_url = replaceAll(nome," ","%20");
+			novo_li_lexico.innerHTML= '<a href=../visao/exibe_lexico.lp?id_projeto='+id_projeto+'&nome='+nome_url+' target="conteudo">'+nome+'</a>';
+			
+			/*@Episódio 7: Adiciona o option criado a combo box.*/
+			ul_lexico.appendChild(novo_li_lexico);
+			
+		}
+	} else {
+		/*@Episódio 8: Emite mensagem de erro caso o XML esteja vazioAdiciona o option criado a combo box.*/
+		if (!eh_iframe){
+				var novo_li_lexico = document.createElement("li");
+			}else{
+				var novo_li_lexico = parent.document.createElement("li");
+		}
+		novo_li_lexico.innerHTML="&nbsp;&nbsp;Não há nenhum símbolo neste projeto."
+		novo_li_lexico.className = "menuTextoSimples";
+		ul_lexico.appendChild(novo_li_lexico);
+		
+	}	
+  
+}
+// substitui todas as ocorrencias de token nas strings pelo símbolo em newtoken
+function replaceAll(string, token, newtoken) {
+	while (string.indexOf(token) != -1) {
+ 		string = string.replace(token, newtoken);
+	}
+	return string;
+}

@@ -1,0 +1,44 @@
+8
+
+dir
+0
+http://svn.assembla.com/svn/cellua/Modelo
+http://svn.assembla.com/svn/cellua
+add
+
+
+
+
+
+
+
+svn:special svn:externals svn:needs-lock
+
+modelo_cenario.lua
+file
+
+
+
+add
+
+modelo_projeto.lua
+file
+
+
+
+add
+
+modelo_lexico.lua
+file
+
+
+
+add
+
+modelo_usuario.lua
+file
+
+
+
+add
+

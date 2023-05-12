@@ -1,0 +1,23 @@
+8
+
+dir
+0
+http://svn.assembla.com/svn/cellua/bd
+http://svn.assembla.com/svn/cellua
+add
+
+
+
+
+
+
+
+svn:special svn:externals svn:needs-lock
+
+conexao_bd.lua
+file
+
+
+
+add
+

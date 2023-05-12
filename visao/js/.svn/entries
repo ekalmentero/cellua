@@ -1,0 +1,37 @@
+8
+
+dir
+0
+http://svn.assembla.com/svn/cellua/Visao/js
+http://svn.assembla.com/svn/cellua
+add
+
+
+
+
+
+
+
+svn:special svn:externals svn:needs-lock
+
+menu.js
+file
+
+
+
+add
+
+scripts.js
+file
+
+
+
+add
+
+ajax.js
+file
+
+
+
+add
+

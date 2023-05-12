@@ -1,0 +1,259 @@
+
+.menu_superior{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: bold;
+  font-variant: normal;
+}
+
+/* 
+Regra 1 - Classe que define as propriedades da barra horizontal
+*/
+ul.menubar{
+  margin: 0px;
+  padding: 0px;
+  background-color: #FFFFFF; /* IE6 Bug */
+}
+/* 
+Regra 2 - Classe que define o formato e a posiçao dos submenus (um ao lado do outro)
+*/ 
+ul.menubar .submenu{
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  background-color: #FFFFFF;
+  border: 1px solid #ccc;
+  float:left; 
+}
+/* 
+Regra 3 - Classe que define a posiçao e a exibiçao dos menus verticais (inicialmente eles nao sao exibidos)
+*/  
+ul.menubar ul.menu{
+  display: none;
+  position: absolute;
+  margin: 0px;
+}
+/* 
+Regra 4 - Classe que define a aparencia do link da barra horizontal
+*/  
+ul.menubar a{
+  padding: 5px;
+  display:block;
+  text-decoration: none;
+  padding: 5px;
+}
+/* 
+Regra 5 - Classe que define o tamanho e a cor do menu vertical
+*/ 
+ul.menu, ul.menu ul{
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #ccc;
+  width: 150px; 
+  background-color: #FFFFFF; /* IE6 Bug */
+} 
+/* 
+Regra 6 - Classe que define o posicionamento dos itens do menu vertical relativos ao submenu
+*/  
+ul.menu li{
+  position: relative;
+  list-style:none;
+  border: 0px;
+}
+/* 
+Regra 7 - Classe que define a aparencia dos links dos itens do menu vertical
+*/  
+ul.menu li a{
+  display: block;
+  text-decoration: none;
+  border: 1px solid #ccc;
+  border-bottom: 0px;
+  padding: 5px 10px 5px 5px;
+}
+/* 
+Regra 8 - Classe que define o posicionamento do menu vertical
+*/   
+ul.menu ul{
+  position: absolute;
+  display: none;
+  left: 149px; /* Definir 1px menor que o tamannho do menu */
+  top: 0px; 
+}
+/* 
+Regra 9 - Classe que define o tamanho e a posiçao do 3o nível de menus
+*/ 
+ul.menu li.submenu {
+  width: 150px; 
+  position: relative; 
+  list-style:none; 
+  border: 0px; 
+  float:none;  
+  z-index: 1000; /* IE7 Bug */
+}
+/* 
+Regra 10 - Classe que define a aparencia dos links do 3o nível de menus
+*/ 
+ul.menu li.submenu a {
+  display: block;
+  text-decoration: none;
+  border: 1px solid #ccc;
+  border-bottom: 0px;
+  padding: 5px 10px 5px 5px;
+}
+
+/* Fixar IE. Invisível para IE Mac \*/
+* html ul.menu li { float: left; height: 1%; } /* Regra 11 */
+* html ul.menu li a { height: 1%; } /* Regra 12 */
+* html ul.menu li.submenu { float: none; height: 1%; } /* Regra 13 */
+* html ul.menu li.submenu a { height: 1%; } /* Regra 14 */
+/* Fim */
+
+/* 
+Regra 15 - Classe que torna os sub-menus invisíveis inicialmente
+*/ 
+ul.menu li.submenu ul { display: none; } 
+/* 
+Regra 16 - Classe que insere a imagem da seta para a direita no menu vertical
+*/  
+ul.menu li.submenu {
+  background-color: transparent;
+  background-image: url(../img/seta_dir.gif);
+  background-repeat: no-repeat;
+  background-position: 93% 50%;
+}
+
+ul#lexico{
+	margin: 0; /* retira o recuo para alguns browsers */ 
+	padding:0; /* retira o recuo para outros browsers */ 
+	list-style-type: none; /* retira o marcador de listas*/ 
+	background-color: #BCD2EE; /* cor do fundo */ 
+}
+
+ul#cenario{
+	margin: 0; /* retira o recuo para alguns browsers */ 
+	padding:0; /* retira o recuo para outros browsers */ 
+	list-style-type: none; /* retira o marcador de listas*/ 
+	background-color: #BCD2EE; /* cor do fundo */ 
+}
+
+ul#lexico li a:link {
+	font-family: tahoma, helvetica, sans-serif;
+	font-style: normal;
+	font-size: 12px;
+	color: #0f0000;
+	line-height:150%;
+	text-decoration: none; 	
+}
+
+ul#cenario li a:link {
+	font-family: tahoma, helvetica, sans-serif;
+	font-style: normal;
+	font-size: 12px;
+	color: #0f0000;
+	line-height:150%;
+	text-decoration: none; 	
+}
+
+ul#lexico li a:visited {
+	font-family: tahoma, helvetica, sans-serif;
+	font-style: normal;
+	font-size: 12px;
+	color: #0f0000;
+	line-height:150%;
+	text-decoration: none; 	
+	border-left:10px solid #6495ED; /* uma barrinha a esquerda dos links */ 
+	padding-left:5px; /* espaçamento entre a barrinha e o texto do link */ 
+}
+
+ul#cenario li a:visited {
+	font-family: tahoma, helvetica, sans-serif;
+	font-style: normal;
+	font-size: 12px;
+	color: #0f0000;
+	line-height:150%;
+	text-decoration: none; 	
+	border-left:10px solid #6495ED; /* uma barrinha a esquerda dos links */ 
+	padding-left:5px; /* espaçamento entre a barrinha e o texto do link */ 
+}
+
+ul#lexico li{
+	border-bottom:1px solid #FFFFFF; 
+	/* coloca uma borda branca entre links */ 
+
+}
+
+ul#cenario li{
+	border-bottom:1px solid #FFFFFF; 
+	/* coloca uma borda branca entre links */ 
+
+}
+
+ul#lexico li a:link, ul#lexico li a:visited {
+	border-left:10px solid #6495ED; /* uma barrinha a esquerda dos links */ 
+	padding-left:5px; /* espaçamento entre a barrinha e o texto do link */ 
+}
+
+ul#cenario li a:link, ul#cenario li a:visited {
+	border-left:10px solid #6495ED; /* uma barrinha a esquerda dos links */ 
+	padding-left:5px; /* espaçamento entre a barrinha e o texto do link */ 
+}
+
+ul#lexico li a:hover {
+	border-left:10px solid #B5B5B5; 
+	background-color:#E8E8E8;
+	color:#696969;
+	/* troca a cor da barrinha */ 
+}
+
+ul#cenario li a:hover {
+	border-left:10px solid #B5B5B5; 
+	background-color:#E8E8E8;
+	color:#696969;
+
+	/* troca a cor da barrinha */ 
+}
+
+ul#lexico li a:link, ul#lexico li a:visited {
+	display:block;
+}
+
+ul#cenario li a:link, ul#cenario li a:visited {
+	display:block;
+}
+.menuLateralTh {
+	border: 2px solid #FFFFFF;
+	background: url(none) no-repeat #191970;
+	width:100px;
+	height:30px;
+}
+
+.menuLateralTexto {
+	font-family: tahoma, helvetica, sans-serif;
+	font-weight:bold;
+	font-style: normal;
+	font-size: 12px;
+	color: #FFFFFF;
+}
+
+.menuTextoSimples {
+	font-family: tahoma, helvetica, sans-serif;
+	font-style: normal;
+	font-size: 12px;
+	color: #EE0000;
+	line-height:150%;
+	text-decoration: none; 	
+}
+#menuLateralScroll{
+	overflow:auto;
+	width:100%;
+	height:95%;
+	display:table;
+}
+body{
+	margin:0; 
+	padding:0; 
+	width:100%;
+	height:100%;
+	
+}

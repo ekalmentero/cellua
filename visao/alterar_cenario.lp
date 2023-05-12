@@ -1,0 +1,108 @@
+<%	
+	dofile("../controle/projeto_beans.lua");
+	dofile("../controle/cenario_beans.lua");
+	
+	--cgilua.enablesession();
+	--if (cgilua.session.data["ID_USUARIO"] == nil) then
+	--	cgilua.redirect(cgilua.mkabsoluteurl("cel/visao/index.html"))
+	--end
+%>	
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<!--
+@Titulo: Exibir cenário para edição
+@Objetivo: Exibir um formulário com informações do cenário e permitir que o usuário as altere.
+@Contexto: Usuário seleciona a opção alterar cenário.
+@Atores: browser e usuário
+@Recursos: scripts.js e estilo.css
+-->
+    <head> 
+		<script src="js/scripts.js" type="text/javascript"></script>
+        <link rel="stylesheet" type="text/css" href="css/estilo.css" />
+		<title>Novo Cenário</title> 
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+    </head> 
+    <body> 
+        <div align=center bgcolor="#ffffff">
+
+<!--
+@Episódio 1: RECUPERAR DADOS DO CENÁRIO
+-->
+<%
+	cenario_selecionado = selecionar_dados_cenario(cgilua.POST.titulo, cgilua.POST.id_projeto, false);
+%>		
+<!--
+@Episódio 2: Sistema exibe as informações do cenário.
+-->
+		<form name="frmAlteracaoCenario" method="post" action="../controle/controle_cenario.lp"> 
+		<table width=457>
+			<tr>
+				<td align="left"><span align="left" class="pes">C&L - Cenários e Léxicos</span></td>
+			</tr>	
+		</table>
+		<table class="tableestilo" cellpadding="20" >
+		<tr>
+		<td>
+			<table cellpadding="5"> 
+	            <tr> 
+	                <td class="labelestilo" colspan="4" align="center"><span class="titulo">Alterando Cenário<br><br><br></span></td> 
+	            </tr>
+				<tr> 
+	                <td class="labelestilo">Projeto:</td><td colspan="3">
+					<input disabled class="inputestilo" id="projeto" name="projeto" maxlength="100" size="80" type="text" value="<% = selecionar_nome_projeto(cgilua.POST.id_projeto) %>">
+					<input id="id_projeto" name="id_projeto" maxlength="100" size="80" type="hidden" value="<% = cgilua.POST.id_projeto %>"></td> 
+	            </tr>
+				<tr> 
+	                <td class="labelestilo">Título:</td><td colspan="3">
+					<input disabled class="inputestilo" name="showtitulo" id="showtitulo" maxlength="100" size="80" type="text" value="<% = cgilua.POST.titulo %>">
+					<input class="inputestilo" name="titulo" id="titulo" maxlength="100" size="80" type="hidden" value="<% = cgilua.POST.titulo %>"></td> 
+					</td> 
+	            </tr>
+				<tr> 
+	                <td class="labelestilo">Objetivo:</td><td colspan="3">
+					<textarea  class="inputestilo"cols="100" name="objetivo" id= "objetivo" rows="3" WRAP="SOFT"><% = cenario_selecionado[1]["OBJETIVO"] %></textarea></td> 
+	            </tr> 
+	            <tr> 
+	                <td class="labelestilo">Contexto:</td><td colspan="3">
+					<textarea  class="inputestilo"cols="100" name="contexto" id="contexto" rows="3" WRAP="SOFT"><% = cenario_selecionado[1]["CONTEXTO"] %></textarea></td> 
+				</tr>
+				<tr> 
+	                <td class="labelestilo">Atores:</td><td colspan="3">
+					<textarea  class="inputestilo"cols="100" name="atores" id="atores" rows="3" WRAP="SOFT"><% = cenario_selecionado[1]["ATORES"] %></textarea></td> 
+	            </tr>				
+				<tr> 
+	                <td class="labelestilo">Recursos:</td><td colspan="3">
+					<textarea  class="inputestilo"cols="100" name="recursos" id="recursos" rows="3" WRAP="SOFT"><% = cenario_selecionado[1]["RECURSOS"] %></textarea></td> 
+				</tr>
+				<tr> 
+	                <td class="labelestilo">Episódios:</td><td colspan="3">
+					<textarea  class="inputestilo"cols="100" name="episodios" id="episodios" rows="6" WRAP="SOFT"><% = cenario_selecionado[1]["EPISODIOS"] %></textarea></td> 
+				</tr>
+				<tr> 
+	                <td class="labelestilo">Exceção:</td><td>
+						<textarea  class="inputestilo"cols="100" name="excecao" id="excecao " rows="3" WRAP="SOFT"><% = cenario_selecionado[1]["EXCECAO"] %></textarea>
+						<input id="comando" name="comando" value="alterar" type="hidden">
+					</td> 
+				</tr>
+	            <tr> 
+	                <td align="center" colspan="4" height="40" valign="bottom">
+<!--
+@Episódio 3: CONTROLE CENÁRIO
+-->					<br>
+					<br>
+					<input name="alterar" type="submit" value="Alterar Cenário"></td> 
+	            </tr> 
+	        </table>
+		</td>	
+		</tr>
+		</table>
+        </form> 
+        </div>
+    </body> 
+</html> 
+
+<?php 
+} 
+?> 
+

@@ -1,0 +1,27 @@
+require"luasql.mysql"
+
+--[[
+@Titulo: Conectar ao banco de dados.
+@Objetivo:Retonar uma conexão com o banco de dados
+@Contexto: a função conectar_bd é chamada.
+@Atores: Banco de dados.
+@Recursos: luasql.mysql.
+]]--
+
+--@Episódio 1: Os atributos da conexão são configurados.
+nome_bd = "cellua";
+login = "root";
+senha = "eduardo";
+endereco = "localhost";
+porta = "3306";
+
+function conectar_bd ()
+
+--@Episódio 2: O ambiente é criado.
+	local ambiente = luasql.mysql ()
+--@Episódio 3: Uma conexão é aberta com as configurações desejadas.
+	local conexao = assert (ambiente:connect (nome_bd, login, senha, endereco, porta));
+--@Episódio 4: A conexão é retornada.
+	return conexao;	
+
+end 

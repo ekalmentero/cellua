@@ -1,0 +1,308 @@
+// Remove os espaços em branco a esquerda da palavra
+String.prototype.ltrim = function() {
+    return this.replace(/^\s+/,"");
+}
+// Validar formulário de cadastro de léxicos
+
+
+function verificar_formulario_lexico() {
+	
+	formulario = document.frmLexico;
+
+	//Verifica se o campo nome do léxico está vazio
+	if (formulario.nome.value.ltrim() == ""){
+	   alert("O campo " + formulario.nome.name + " deve ser preenchido!");
+	   formulario.nome.focus();
+	   return false;
+	}
+	
+	//verifica se já existe símbolo do léxico com o nome informado
+	
+	//function ajax(id_projeto, eh_iframe) {
+	
+	// comando --> cadastrar
+	// nome_lexico --> 
+	// id_projeto --> 
+	
+	
+/*@Episódio 1: Criar uma requisição http dependendo do browser que o usuário está utilizando. Emite uma mensagem de alerta caso o browser não possua recursos para o uso do ajax.*/
+	
+	
+	
+	
+	//Verifica se o campo noção do léxico está vazio
+	if (formulario.nocao.value.ltrim() == ""){
+	   alert("O campo " + formulario.nocao.name + " deve ser preenchido!");
+	   formulario.nocao.focus();
+	   return false;
+	}
+	
+	//Verifica se o campo impacto do léxico está vazio
+	//if (formulario.impacto.value.ltrim() == ""){
+	//   alert("O campo " + formulario.impacto.name + " deve ser preenchido!");
+	//   formulario.impacto.focus();
+	//   return false;
+	//}
+	
+    //Seta a propriedade selected de cada item do campo sinônimos para true. Dessa forma ele irá passar todos os sinônimos ao submeter o formulário.
+	
+	lista_de_sinonimos = document.forms[0].elements['lista_de_sinonimos']; 
+
+	for(var i = 0; i < lista_de_sinonimos.length; i++) 
+		lista_de_sinonimos.options[i].selected = true;
+	
+		
+}
+
+//Validar formulário de cadastro de cenários
+
+function verificar_formulario_cenario()
+{
+	formulario = document.frmCadastroCenario;
+	
+	//Verifica se o campo titulo do cenário está vazio.
+	if (formulario.titulo.value.ltrim() == ""){
+	   alert("O campo " + formulario.titulo.name + " deve ser preenchido!");
+	   formulario.titulo.focus();
+	   return false;
+	}
+	
+	//Verifica se o campo objetivo do cenário esta preenchido
+	if (formulario.objetivo.value.ltrim() == ""){
+	   alert("O campo " + formulario.objetivo.name + " deve ser preenchido!");
+	   formulario.objetivo.focus();
+	   return false;
+	}
+	
+	//Verifica se o campo contexto do cenário está preenchido
+	if (formulario.contexto.value.ltrim() == ""){
+	   alert("O campo " + formulario.contexto.name + " deve ser preenchido!");
+	   formulario.contexto.focus();
+	   return false;
+	}
+	
+	//Verifica se o campo atores do cenário está vazio
+	if (formulario.atores.value.ltrim() == ""){
+	   alert("O campo " + formulario.atores.name + " deve ser preenchido!");
+	   formulario.atores.focus();
+	   return false;
+	}
+	
+	//Verifica se o campo recursos do cenário está vazio
+	if (formulario.recursos.value.ltrim() == ""){
+	   alert("O campo " + formulario.recursos.name + " deve ser preenchido!");
+	   formulario.recursos.focus();
+	   return false;
+	}
+	
+	//Verifica se o campo episodios do cenário está vazio
+	if (formulario.episodios.value.ltrim() == ""){
+	   alert("O campo " + formulario.episodios.name + " deve ser preenchido!");
+	   formulario.episodios.focus();
+	   return false;
+	}
+	return true;
+}
+
+// Validar formulário de cadastro de projetos
+
+function verificar_formulario_projeto()
+{
+	formulario = document.form_projeto;
+	
+	//Verifica se o campo nome do projeto está vazio
+	if (formulario.nome.value.ltrim() == ""){
+	   alert("O campo " + formulario.nome.name + " deve ser preenchido!");
+	   formulario.nome.focus();
+	   return false;
+	}
+	
+	//Verifica se o campo sobrenome está vazio
+	if (formulario.descricao.value.ltrim() == ""){
+	   alert("O campo " + formulario.descricao.name + " deve ser preenchido!");
+	   formulario.descricao.focus();
+	   return false;
+	}
+	//Verifica se o campo id_usuario esta vazio
+	if (formulario.id_usuario.value.ltrim() == ""){
+	   alert ("O campo " +formulario.id_usuario.name + " não foi preenchido corretamente. Este é um erro do sistema. Por favor, entre em contato com o adminitrador."); 
+	   return false;
+	}	   
+
+
+	return true;
+}
+
+
+/*
+@Título: Validar formulário de cadastro de usuário.
+@Objetivo: Assegurar que o formulário de cadastro de usuário seja preenchido
+da maneira correta.	
+@Contexto: O formulário de cdastro é preenchido	e submetido pelo usuário.
+@Atores: cadastro_usuario.html
+@Recursos: dados do usuário (nome, sobrenome, e-mail, instituição, login,
+senha e	confirmar senha)	
+*/
+function verificar_formulario_usuario()
+{
+	formulario = document.frmCadastro;
+	
+/*
+@Episódio 1: Verificar se o campo nome está vazio ou 
+contém apenas espaços em branco. Se o campo estiver 
+vazio, emite alerta para o usuário e põe o foco do
+cursor nele.
+*/
+	if (formulario.nome.value.ltrim() == ""){
+	   alert("O campo " + formulario.nome.name + " deve ser preenchido!");
+	   formulario.nome.focus();
+	   return false;
+	}
+	
+/*
+@Episódio 2: Verificar se o campo sobrenome está vazio
+ou se contém apenas espaços em branco. Se o campo 
+estiver vazio emite um alerta para o usuário e põe
+o foco do cursor nele.
+*/
+	if (formulario.sobrenome.value.ltrim() == ""){
+	   alert("O campo " + formulario.sobrenome.name + " deve ser preenchido!");
+	   formulario.sobrenome.focus();
+	   return false;
+	}
+
+	//Verifica se o campo email está vazio 
+	if (formulario.email.value.ltrim() == ""){
+	   alert("O campo " + formulario.email.name + " deve ser preenchido!");
+	   formulario.email.focus();
+	   return false;
+	}
+
+	// Verifica se o campo instituição
+	if (formulario.instituicao.value.ltrim() == ""){
+	   alert("O campo " + formulario.instituicao.name + " deve ser preenchido!");
+	   formulario.instituicao.focus();
+	   return false;
+	}
+
+	// Verifica se o campo login está vazio
+	if (formulario.login.value.ltrim() == ""){
+	   alert("O campo " + formulario.login.name + " deve ser preenchido!");
+	   formulario.login.focus();
+	   return false;
+	}
+
+	//Verifica se o campo senha está vazio
+	if (formulario.senha.value.ltrim() == ""){
+	   alert("O campo " + formulario.senha.name + " deve ser preenchido!");
+	   formulario.senha.focus();
+	   return false;
+	}
+
+	// Verifica se o conteudo do campo senha é igual ao do campo verificar senha
+	if (formulario.senha.value != formulario.confirmarsenha.value){
+	   alert("O campo " + formulario.confirmarsenha.name + " deve conter a mesma senha digitada no campo senha!");
+	   formulario.confirmarsenha.focus();
+	   return false;
+	}
+	return true;
+}
+
+
+
+//Adicionar sinônimo na lista de sinônimos
+function adicionar_sinonimo()
+{
+	lista_de_sinonimos = document.forms[0].elements['lista_de_sinonimos'];
+
+	if(document.forms[0].sinonimo.value == "")
+	    return;
+
+	sinonimo = document.forms[0].sinonimo.value;
+	padrao = /[\\\/\?"<>:|]/;
+	nOK = padrao.exec(sinonimo);
+	if (nOK)
+	{
+	    window.alert ("O sinônimo do léxico não pode conter nenhum dos seguintes caracteres:   / \\ : ? \" < > |");
+	    document.forms[0].sinonimo.focus();
+	    return;
+	}
+
+	//verifica se ja existe algum sinônimo na lista com o mesmo nome do que está sendo inserido
+	
+	for (i=0; i < lista_de_sinonimos.length; i++)
+    {
+		if(sinonimo == lista_de_sinonimos.options[i].text)
+		{
+			alert("Voce já adicionou um sinônimo com o nome "+sinonimo+"!");
+			return;
+		}
+    }
+	
+	lista_de_sinonimos.options[lista_de_sinonimos.length] = new Option(document.forms[0].sinonimo.value, document.forms[0].sinonimo.value);
+
+	document.forms[0].sinonimo.value = "";
+
+	document.forms[0].sinonimo.focus();
+
+}
+
+
+// Remover sinônimo da lista de sinonimos
+function remover_sinonimo()
+{
+	lista_de_sinonimos = document.forms[0].elements['lista_de_sinonimos'];
+
+	if(lista_de_sinonimos.selectedIndex == -1)
+		return;
+	else
+		lista_de_sinonimos.options[lista_de_sinonimos.selectedIndex] = null;
+	
+	remover_sinonimo();
+
+}
+
+// submete o formulario de lexico
+function submeter_formulario_lexico(acao){
+		
+	if (acao == "remover"){
+	
+		var resposta = confirm("Deseja remover o símbolo \""+document.getElementById("nome").value+"\"?")
+		if (resposta){
+			document.dadosLexico.action = "../controle/controle_lexico.lp";
+			document.getElementById("comando").value = "remover";
+			document.dadosLexico.submit();
+		}
+				
+	} else if (acao == "alterar"){
+		document.dadosLexico.action = "alterar_lexico.lp";
+		document.dadosLexico.submit();
+	}
+
+	
+}
+
+// submete o formulário de cenários
+function submeter_formulario_cenario(acao){
+		
+	if (acao == "remover"){
+
+		var resposta = confirm("Deseja remover o cenário \""+document.getElementById("titulo").value+"\" ?")
+		if(resposta){	
+			document.dadosCenario.action = "../controle/controle_cenario.lp";
+			document.getElementById("comando").value = "remover";
+			document.dadosCenario.submit;
+		}	
+	
+	} else if (acao == "alterar"){
+		document.dadosCenario.action = "alterar_cenario.lp";
+		document.dadosCenario.submit();
+	}
+	
+	
+}
+
+
+
+
+ 

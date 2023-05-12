@@ -1,0 +1,140 @@
+<!--
+Título: Exibir página inicial do sistema.
+Objetivo: Exibir a página inicial do sistema, contendo uma breve história e o objetivo da ferramenta, alguns artigos sobre o 
+tema e as seguintes opções para o usuário: Se cadastrar no sistema, recuperar sua senha ou se autenticar no sistema.
+Contexto: O usuário acessa do sistema.
+Atores: usuário.
+Recursos: Navegador (Os seguintes navegadores são suportados: Mozilla Firefox, Internet Explorer e Google Chrome).
+Episódios:
+-->
+
+<html>
+<head>
+	  <link rel="stylesheet" type="text/css" href="css/estilo.css" />
+	  <title>C&L - Cenários e Léxicos</title> 
+</head>
+
+<body height=100% width=100%>
+
+<div align="center" height=100% width=100%>
+<table border=0 height="100%" width="90%">
+<tr>
+	<td colspan=2 align=left><img src="imagens/cellogo.jpg"><hr></td>
+	
+</tr>
+<tr>
+
+<td width="50%">
+	<br />
+	<br />
+<!-- 
+Episódio 1: Exibir um texto com um resumo da história da ferramenta e seu objetivo.	
+-->
+	<span class=textoestilo>O C&L foi inicialmente desenvolvido como um trabalho acadêmico e hoje evolui para um projeto de Software Livre. 
+	Sua responsabilidade é do Grupo de Engenharia de Requisitos, da Puc-Rio.</span><br />
+	<br />
+	<span class=textoestilo>O objetivo desse projeto é estudar e analisar técnicas de evolução de software 
+	através de um experimento prático.</span> <br />
+    <br />
+	<span class=textoestilo>A aplicação utilizada como projeto inicial a ser 'evoluído' foi uma ferramenta de Edição de Cenários e Léxico 
+	disponibilizada em http://springfield.genesis.puc-rio.br:81/~pes/.</span><br />
+	<br />
+	
+<!-- 
+Episódio 2: Exibir links para artigos relacionados com o tema da ferramenta
+-->	
+	<span class=textoestilo>Artigos:</span><br />
+	
+	<ul>
+		<li><span class=textoestilo><a target="new" href="http://www-di.inf.puc-rio.br/~karin/pos/lexico.pdf">Léxicos - "A Strategy for Conceptual Model Acquisition".</a></span></li>        
+        <li><span class=textoestilo><a target="new" href="http://www-di.inf.puc-rio.br/~karin/pos/cenario.pdf">Cenários - "Enhancing a Requirements Baseline with Scenarios" .</a></span></li>                
+        <li><span class=textoestilo><a target="new" href="./Artigos/C&L.pdf">C&L: Uma ferramenta para Edição e Visualização de Cenários e Léxicos.</a></span></li>        
+        <li><span class=textoestilo><a target="new" href="http://www.er.les.inf.puc-rio.br/pes/selmas.pdf">Processo de construção de Ontologias baseado no Léxico.</a></span></li>
+        <li><span class=textoestilo><a target="new" href="./Artigos/Felicissimo_WER2003.pdf">Geração de Ontologias subsidiada pela Engenharia de Requisitos.</a></span></li>         
+
+	</ul>
+	<br />
+<!-- 
+Episódio 3: Exibir links para apresentações relacionados com o tema da ferramenta
+-->	
+	<span class=textoestilo>Transparencias:</span><br />
+
+    <ul>
+		<li><span class=textoestilo><a target="new" href="http://www.er.les.inf.puc-rio.br/pes/lexico e cenarios1.ppt">Cenários e Léxicos.</a></span></li>        
+         <li><span class=textoestilo><a target="new" href="./Artigos/apresentacaoC&L.ppt">C&L: Uma ferramenta para Edição e Visualização de Cenários e Léxicos.</a></span></li> 
+	</ul>
+	
+	
+</td>
+
+<td width="50%" align=center valign=top>
+	<br />
+	<br />
+	<div class="bordaBox" align=center>
+	<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+	<div class="conteudo">
+	
+		<table border=0>
+		<tr>	
+		<td>
+			<form name="frmLogin" method="post" action="../controle/controle_usuario.lp"> 
+				<table border=0 cellpadding=5 cellpadding=5 width=220 height=120>
+<!-- 
+Episódio 4: Exibir os campos login e senha para que o usuário os preencha e se autentique no sistema.
+-->
+				<tr>
+					<td class="titulomedio" colspan=2 align=left>Entrar no C&L</td>
+				</tr>
+
+				<tr>
+					<td class="textonormal">Login: </td>
+					<td align=right><input type="text" id="login" name="login"></td>
+				</tr>
+				<tr>
+					<td class="textonormal">Senha: </td>
+					<td align=right>
+						<input type="password" id="senha" name="senha">
+						<input id="comando" name="comando" value="logar" type="hidden">
+					</td>
+				</tr>
+				</table>
+				<table class="textonormal" border=0 cellpadding=5 cellpadding=5 width=220>
+					<tr>
+<!-- 
+Episódio 5: Exibir o link para EXIBIR FÓRMULÁRIO DE CADASTRO DE USUÁRIO.
+-->
+					<td align=left><a target="new" href="novo_usuario.html">Cadastre-se!</a></td>
+<!-- 
+Episódio 6: Exibir o link para EXIBIR PÁGINA PARA RECUPERAR SENHA DO USUÁRIO.
+-->
+						<td align=right><a target="new" href="esqueci_senha.html">Esqueceu a senha?</a></td>
+					</tr>	
+					<tr>
+						<td><p></p></td>
+					</tr>
+					<tr>
+<!-- 
+Episódio 7: Ao clicar no botão cadastrar o sistema será redirecionado para CONTROLE USUARIO
+-->
+						<td colspan=2 align=right><br><input type=submit value="Entrar"></td>
+					</tr>
+					
+				</table>
+			<form>		
+		</td>
+		</tr>	
+		</table>
+	</div>
+	<b class="b4"></b><b class="b3"></b><b class="b2"></b><b class="b1"></b>
+	</div>
+	
+	
+	
+
+</td>
+
+</tr>
+</table>
+</div>
+<body>
+</html>

@@ -1,0 +1,44 @@
+8
+
+dir
+0
+http://svn.assembla.com/svn/cellua/DAO
+http://svn.assembla.com/svn/cellua
+add
+
+
+
+
+
+
+
+svn:special svn:externals svn:needs-lock
+
+cenario_dao.lua
+file
+
+
+
+add
+
+projeto_dao.lua
+file
+
+
+
+add
+
+lexico_dao.lua
+file
+
+
+
+add
+
+usuario_dao.lua
+file
+
+
+
+add
+

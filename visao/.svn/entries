@@ -1,0 +1,156 @@
+8
+
+dir
+0
+http://svn.assembla.com/svn/cellua/Visao
+http://svn.assembla.com/svn/cellua
+add
+
+
+
+
+
+
+
+svn:special svn:externals svn:needs-lock
+
+inicial_conteudo.lp
+file
+
+
+
+add
+
+imagens
+dir
+
+
+
+add
+
+inicial_projeto.lp
+file
+
+
+
+add
+
+css
+dir
+
+
+
+add
+
+principal.lp
+file
+
+
+
+add
+
+novo_cenario.lp
+file
+
+
+
+add
+
+novo_usuario.html
+file
+
+
+
+add
+
+novo_projeto.lp
+file
+
+
+
+add
+
+novo_lexico.lp
+file
+
+
+
+add
+
+sucesso_cenario.lp
+file
+
+
+
+add
+
+outras_opcoes.lp
+file
+
+
+
+add
+
+sucesso_projeto.lp
+file
+
+
+
+add
+
+sucesso_lexico.lp
+file
+
+
+
+add
+
+alterar_cenario.lp
+file
+
+
+
+add
+
+fale_conosco.lp
+file
+
+
+
+add
+
+exibe_cenario.lp
+file
+
+
+
+add
+
+alterar_lexico.lp
+file
+
+
+
+add
+
+exibe_lexico.lp
+file
+
+
+
+add
+
+index.html
+file
+
+
+
+add
+
+js
+dir
+
+
+
+add
+
